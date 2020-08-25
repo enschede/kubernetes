@@ -7,6 +7,9 @@
     kubectl expose deployment module1 --type=NodePort --port=8080
     kubectl expose deployment module1 --type=LoadBalancer --port=8080
 
+    kubectl get ingress
+    kubectl get ing
+
 ### ClusterIP
 ClusterIP creates a service that is accesseble within the cluster
 
@@ -86,5 +89,30 @@ Use a predefined port
       sessionAffinity: None
       type: LoadBalancer
 
+### Ingress
+To be tested
+
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      name: module1-ingress
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+      labels:
+        app: module1
+    spec:
+      rules:
+        - http:
+            paths:
+              - path: /testpath/*
+    #            pathType: Prefix
+                backend:
+                  serviceName: module1
+                  servicePort: 8080
+
+
 ### Docker Desktop
-On Docker Desktop, there seems to be no difference using NodePort or LoadBalancer
+On Docker Desktop
+- the LoadBalancer type seems not to be functional
+- the Ingress type seems not to be functional
+
