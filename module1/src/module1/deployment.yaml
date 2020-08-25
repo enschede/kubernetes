@@ -6,7 +6,6 @@ metadata:
   labels:
     app: module1
   name: module1
-#  namespace: default
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

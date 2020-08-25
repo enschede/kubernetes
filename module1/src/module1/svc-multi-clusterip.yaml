@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: module1
+  name: module1
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: special
+      port: 8081
+      protocol: TCP
+      targetPort: special
+  selector:
+    app: module1
+  sessionAffinity: None
+  type: ClusterIP
