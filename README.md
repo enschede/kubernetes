@@ -2,6 +2,7 @@
 
 - [Service](service.md)
 - [ConfigAndSecrests](configAndSecrets.md)
+- [Persistent volumes](volumes.md)
 
 ## Docker commands
 
