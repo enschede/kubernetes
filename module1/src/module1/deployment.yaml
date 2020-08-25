@@ -24,8 +24,21 @@ spec:
         app: module1
     spec:
       containers:
-      - image: enschede/kubernetes-module1:0.0.1-SNAPSHOT
-        imagePullPolicy: IfNotPresent
+      - image: enschede/kubernetes-module1:0.0.3-SNAPSHOT
+        env:
+          - name: env1
+            value: valueForEnv1
+          - name: env2
+            valueFrom:
+              configMapKeyRef:
+                name: my-config
+                key: myconfig.env2
+          - name: env3
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: env3
+        imagePullPolicy: Always
         name: kubernetes-module1
         resources: {}
         terminationMessagePath: /dev/termination-log

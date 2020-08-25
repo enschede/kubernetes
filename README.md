@@ -1,6 +1,7 @@
 # Kubernetes test project
 
 - [Service](service.md)
+- [ConfigAndSecrests](configAndSecrets.md)
 
 ## Docker commands
 

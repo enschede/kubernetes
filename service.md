@@ -90,7 +90,7 @@ Use a predefined port
       type: LoadBalancer
 
 ### Ingress
-To be tested
+Not tested yet
 
     apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
