@@ -1,10 +1,9 @@
 package nl.marcenschede.tests.kubernetes;
 
-import io.micrometer.core.util.internal.logging.Slf4JLoggerFactory;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.slf4j.SLF4JLogger;
+import brave.Tracer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,6 +33,9 @@ public class KubernetesApplication {
 
     @Value("${git.build.version}")
     private String buildVersion;
+
+    @Autowired
+    private Tracer tracer;
 
     public static void main(String[] args) {
         SpringApplication.run(KubernetesApplication.class, args);
@@ -66,9 +68,11 @@ public class KubernetesApplication {
     @GetMapping("/versions")
     public String showVersions() {
 
+        String spanIdString = tracer.currentSpan().context().spanIdString();
+
         logger.info("running showVersions");
 
-        return String.format("Version module1 = %s", buildVersion);
+        return String.format("SpanID = %s\nVersion module1 = %s", spanIdString, buildVersion);
     }
 
     @Bean

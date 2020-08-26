@@ -1,6 +1,10 @@
 # Spring Cloud
 
 ## Sleuth
+Zorgt voor toevoegen van een TraceID en SpanID
+
+- TraceID is uniek op ieder component
+- SpanID is gemeenschappelijk op alle componenten
 
 ### pom file
 
@@ -25,8 +29,21 @@
         <artifactId>spring-cloud-starter-sleuth</artifactId>
     </dependency>
 
+### application.properties
+
+    spring.application.name=Kubernetes Module 1
+
+### Using the span ID
+    
+    @Autowired
+    private Tracer tracer;
+
+    String spanIdString = tracer.currentSpan().context().spanIdString();
+
+Met de Tracer kunnen het TraceID en SpanID gemanipuleerd worden
+
 ### Logging example
 
-    2020-08-26 13:43:44.928  INFO [,acc36632d66e8a3b,acc36632d66e8a3b,true] 41770 --- [nio-8080-exec-1] n.m.t.kubernetes.KubernetesApplication   : running showEnv3
+    2020-08-26 13:43:44.928  INFO [Kubernetes Module 1,acc36632d66e8a3b,acc36632d66e8a3b,true] 41770 --- [nio-8080-exec-1] n.m.t.kubernetes.KubernetesApplication   : running showEnv3
 
 

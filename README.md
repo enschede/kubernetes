@@ -1,5 +1,6 @@
 # Kubernetes test project
 
+- [Spring Cloud](springcloud.md)
 - [Deployment](deployment.md)
 - [Service](service.md)
 - [ConfigAndSecrets](configAndSecrets.md)
