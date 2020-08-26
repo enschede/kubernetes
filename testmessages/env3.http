@@ -1,1 +1,1 @@
-GET http://localhost:30286/env3
+GET http://{{host}}/env3

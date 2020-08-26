@@ -8,6 +8,10 @@
     helm install --name module1 .
     helm ls
     helm list
+    
+    helm upgrade module1 .
+    helm history module1
+    
     helm delete module1
     helm delete --purge module1
 

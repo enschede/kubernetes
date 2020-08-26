@@ -1,4 +1,4 @@
-# Usefull Docker commands
+# Useful Docker commands
 
 ### Containers
     docker container ls -a

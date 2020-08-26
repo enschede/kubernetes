@@ -1,1 +1,1 @@
-GET http://localhost:30286/actuator/health
+GET http://{{host}}/actuator/health
