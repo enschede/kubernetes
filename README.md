@@ -9,9 +9,11 @@
 - [Helm](helm.md)
 - [Useful Docker commands](docker.md)
 
+- [Dashboard](dashboard.md)
+
+
 # Todo
 
-- SB Cloud Kubernetes  
 - Deploy op AWS
 - LoadBalancer vs NodePort op AWS
 - Ingress op AWS
