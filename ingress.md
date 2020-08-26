@@ -31,4 +31,12 @@ Dan de ingress definiëren
                   serviceName: module1-nodeport
                   servicePort: 8080
 
+ServicePort mag ook een naam zijn, deze moet dan ook in de service zo voorkomen. Zie voorbeeld bij [Service](service.md).
+
+Bron
+
+    https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
+    https://www.freshbrewed.science/aks-and-ingress-again/index.html
+    
+
 

@@ -14,6 +14,8 @@
     kubectl delete all -l app=module1
     kubectl delete service -l app=module1
     
+    kubectl logs deployment/module1
+    kubectl logs -f deployment/module1
 
 ## Desployment descriptor
 
