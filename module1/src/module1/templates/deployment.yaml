@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: module1
+  name: module1
+spec:
+  progressDeadlineSeconds: 600
+  replicas: {{.Values.replicaCount}}
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: module1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: module1
+    spec:
+      containers:
+      - image: enschede/kubernetes-module1:0.0.3-SNAPSHOT
+        env:
+          - name: env1
+            value: valueForEnv1
+          - name: env2
+            valueFrom:
+              configMapKeyRef:
+                name: my-config
+                key: myconfig.env2
+          - name: env3
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: env3
+        imagePullPolicy: Always
+        name: kubernetes-module1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

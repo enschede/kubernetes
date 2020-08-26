@@ -4,11 +4,11 @@
 - [ConfigAndSecrets](configAndSecrets.md)
 - [Persistent volumes](volumes.md)
 - [DnsAndServiceDiscovery](serviceDiscovery.md)
+- [Helm](helm.md)
 - [Usefull Docker commands](docker.md)
 
 # Todo
 
-- Helm
 - SB Cloud Kubernetes  
 - Deploy op AWS
 - LoadBalancer vs NodePort op AWS
