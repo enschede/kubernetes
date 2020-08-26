@@ -3,15 +3,13 @@ kind: Service
 metadata:
   labels:
     app: module1
-  name: module1-nodeport
-  namespace: default
+  name: module1
 spec:
   ports:
-    - nodePort: 30286
-      port: 8080
+    - port: 8080
       protocol: TCP
       targetPort: 8080
   selector:
     app: module1
   sessionAffinity: None
-  type: NodePort
+  type: ClusterIP

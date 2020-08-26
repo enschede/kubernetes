@@ -17,7 +17,7 @@ Environment vars
       template:
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.5-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
             env:
               - name: env1
                 value: valueForEnv1

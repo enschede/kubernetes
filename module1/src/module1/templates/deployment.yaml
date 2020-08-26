@@ -24,45 +24,24 @@ spec:
         app: module1
     spec:
       containers:
-      - image: enschede/kubernetes-module1:0.0.5-SNAPSHOT
-        env:
-          - name: env1
-            value: valueForEnv1
-          - name: env2
-            valueFrom:
-              configMapKeyRef:
-                name: my-config
-                key: myconfig.env2
-          - name: env3
-            valueFrom:
-              secretKeyRef:
-                name: mysecret
-                key: env3
-        imagePullPolicy: Always
-        name: kubernetes-module1
-        resources:
-          requests:
-            # cpu: 200m
-            memory: 512Mi
-          limits:
-            # cpu 400m
-            memory: 1024Mi
-        readinessProbe:
-          httpGet:
-            port: 8080
-            path: /actuator/health
-          failureThreshold: 5
-          periodSeconds: 10
-          initialDelaySeconds: 60
-        livenessProbe:
-          httpGet:
-            port: 8080
-            path: /actuator/health
-          failureThreshold: 5
-          periodSeconds: 10
-          initialDelaySeconds: 60
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+        - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
+          env:
+            - name: env1
+              value: valueForEnv1
+            - name: env2
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config
+                  key: myconfig.env2
+            - name: env3
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: env3
+          imagePullPolicy: Always
+          name: kubernetes-module1
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

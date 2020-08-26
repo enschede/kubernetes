@@ -46,4 +46,26 @@ Met de Tracer kunnen het TraceID en SpanID gemanipuleerd worden
 
     2020-08-26 13:43:44.928  INFO [Kubernetes Module 1,acc36632d66e8a3b,acc36632d66e8a3b,true] 41770 --- [nio-8080-exec-1] n.m.t.kubernetes.KubernetesApplication   : running showEnv3
 
+## Log web request
+Handige truuk om web requests te debuggen
+    
+    @Configuration
+    public class RequestLoggingFilterConfig {
+     
+        @Bean
+        public CommonsRequestLoggingFilter logFilter() {
+            CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+            filter.setIncludeQueryString(true);
+            filter.setIncludePayload(true);
+            filter.setMaxPayloadLength(10000);
+            filter.setIncludeHeaders(false);
+            filter.setAfterMessagePrefix("REQUEST DATA : ");
+            return filter;
+        }
+    }
+
+
+### application.properties
+
+    logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG
 
