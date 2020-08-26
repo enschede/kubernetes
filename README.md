@@ -4,6 +4,7 @@
 - [ConfigAndSecrets](configAndSecrets.md)
 - [Persistent volumes](volumes.md)
 - [DnsAndServiceDiscovery](serviceDiscovery.md)
+- [Usefull Docker commands](docker.md)
 
 # Todo
 
@@ -16,12 +17,6 @@
 - EBS op AWS
 - Logging op AWS
 
-# Docker commands
-
-    docker container ls -a
-    docker container ls
-    docker image ls
-    
 ## Kubernetes deployment
 
     kubectl create deployment module1 --image=enschede/kubernetes-module1:0.0.1-SNAPSHOT
