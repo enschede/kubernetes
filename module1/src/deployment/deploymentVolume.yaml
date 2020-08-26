@@ -38,11 +38,26 @@ spec:
               secretKeyRef:
                 name: mysecret
                 key: env3
+        volumeMounts:
+          - mountPath: /externalvolume
+            name: pvc1
         imagePullPolicy: Always
         name: kubernetes-module1
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+      volumes:
+        - name: pvc1
+          persistentVolumeClaim:
+            claimName: module1-pvc
+#        - name: emptydir-pvc
+#          # Directory in de container, is niet persistant
+#          emptyDir: {}
+#        - name: host1
+#          # Directory op host, prima setting in Docker Desktop
+#          hostPath:
+#            path: /Users/marc/mnt
+#            type: Directory
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
