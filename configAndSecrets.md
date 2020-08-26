@@ -17,7 +17,7 @@ Environment vars
       template:
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.3-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.4-SNAPSHOT
             env:
               - name: env1
                 value: valueForEnv1
@@ -50,7 +50,7 @@ Via command line
 
 Via secret file
 
-    echo -n 'valueForEnv3FromCommandLine' | base64
+    echo -n 'valueForEnv3FromFile' | base64
     
 Add value to secret file
 
