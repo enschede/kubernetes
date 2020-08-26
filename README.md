@@ -3,27 +3,18 @@
 - [Service](service.md)
 - [ConfigAndSecrets](configAndSecrets.md)
 - [Persistent volumes](volumes.md)
+- [DnsAndServiceDiscovery](serviceDiscovery.md)
 
 # Todo
 
 - Helm
 - SB Cloud Kubernetes  
 - Deploy op AWS
-- DNS naming
 - LoadBalancer vs NodePort op AWS
 - Ingress op AWS
     - verwijzen naar named port
 - EBS op AWS
 - Logging op AWS
-
-## DNS naming
-
-- postgres-postgresql.default.svc.cluster.local
-    - postgres-postgresql is servicename
-    - default is namespace
-    - svc.cluster.local verwijst naar service
-- postgres-postgresql
-    - verwijst naar service in eigen namespace
 
 # Docker commands
 
