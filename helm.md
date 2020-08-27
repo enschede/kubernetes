@@ -1,8 +1,22 @@
 # Helm
 
-### Install met Helm
+## Voorbereiden Helm
+
+### Docker Desktop
 
     helm init
+
+### AWS EKS
+
+    kubectl create serviceaccount --namespace kube-system tiller
+    kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+    kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+    helm init
+
+Bron: https://github.com/fnproject/fn-helm/issues/21
+
+## Install met Helm
+
     helm create module1
     
     helm install --name module1 .
@@ -14,4 +28,3 @@
     
     helm delete module1
     helm delete --purge module1
-

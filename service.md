@@ -94,9 +94,13 @@ See [Ingress](ingress.md)
 
 ### Docker Desktop
 On Docker Desktop
-- the LoadBalancer type seems not to be functional
+- the LoadBalancer type seems not to be functional (other than NodePort)
 - the Ingress should be loaded. See [Ingres](ingress.md)
 
+### AWS EKS
+On EKS
+- the NodePort seems not to be functionel (other than ClusterIP), both do not expose a port
+- the LoadBalancer initiates an load balancer to be spinned up (one for each service)
 
 ## Service discovery and DNS naming
 

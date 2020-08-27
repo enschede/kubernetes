@@ -60,5 +60,8 @@ Bron
     https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
     https://www.freshbrewed.science/aks-and-ingress-again/index.html
     
+## AWS EKS
+
+Bron https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 
