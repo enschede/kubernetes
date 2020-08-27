@@ -3,6 +3,7 @@
 ### Command
 
     kubectl create deployment module1 --image=enschede/kubernetes-module1:0.0.1-SNAPSHOT
+    kubectl api-resources
     kubectl get pods
     kubectl get all
     kubectl get deployment/module1   
@@ -10,7 +11,9 @@
     kubectl get deployment/module1 -o yaml >deployment.yaml   
     kubectl delete deployment/module1
     kubectl apply -f deployment.yaml -f service.yaml
-    
+    kubectl scale --replicas=1 deployment/module1
+    kubectl rolling-update demo1rpi --image=enschede/demo1rpi:3
+        
     kubectl delete all -l app=module1
     kubectl delete service -l app=module1
     
@@ -45,7 +48,7 @@
             app: module1
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
             env: {}
               # Zie configAndSecrets
             imagePullPolicy: Always
@@ -61,7 +64,7 @@
 ### Resources
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
             resources:
               requests:
                 # cpu: 200m
@@ -74,7 +77,7 @@
 Wordt gebruikt door replica set om te bepalen of pod healthy is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
             readinessProbe:
               httpGet:
                 port: 8080
@@ -87,7 +90,7 @@ Wordt gebruikt door replica set om te bepalen of pod healthy is
 Wordt gebruikt door load balancer om te bepalen of pod ready is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.6-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
             livenessProbe:
               httpGet:
                 port: 8080

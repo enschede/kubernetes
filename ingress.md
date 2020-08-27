@@ -1,6 +1,28 @@
 # Ingress op Kubernetes
 
-### Ingress op Docker Desktop
+
+## Ingress
+Not tested yet
+
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      name: module1-ingress
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+      labels:
+        app: module1
+    spec:
+      rules:
+        - http:
+            paths:
+              - path: /testpath/*
+    #            pathType: Prefix
+                backend:
+                  serviceName: module1
+                  servicePort: 8080
+
+## Ingress op Docker Desktop
 
 Installeren van de Ingress op Docker Desktop
 

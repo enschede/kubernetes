@@ -90,29 +90,26 @@ Use a predefined port
       type: LoadBalancer
 
 ### Ingress
-Not tested yet
-
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-      name: module1-ingress
-      annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /
-      labels:
-        app: module1
-    spec:
-      rules:
-        - http:
-            paths:
-              - path: /testpath/*
-    #            pathType: Prefix
-                backend:
-                  serviceName: module1
-                  servicePort: 8080
-
+See [Ingress](ingress.md)
 
 ### Docker Desktop
 On Docker Desktop
 - the LoadBalancer type seems not to be functional
-- the Ingress type seems not to be functional
+- the Ingress should be loaded. See [Ingres](ingress.md)
 
+
+## Service discovery and DNS naming
+
+- postgres-postgresql.default.svc.cluster.local
+    - postgres-postgresql is servicename
+    - default is namespace
+    - svc.cluster.local verwijst naar service
+- postgres-postgresql
+    - verwijst naar service in eigen namespace
+
+
+The caller service then need only refer to names resolvable in a particular Kubernetes cluster. A simple implementation might use a spring RestTemplate that refers to a fully qualified domain name (FQDN), such as 
+
+    {service-name}.{namespace}.svc.{cluster}.local:{service-port}
+
+https://docs.spring.io/spring-cloud-kubernetes/docs/1.1.5.RELEASE/reference/html/
