@@ -77,6 +77,11 @@ public class KubernetesApplication {
         return String.format("env3 has value '%s'", env3);
     }
 
+    @GetMapping
+    public List<String> root() {
+        return showVersions();
+    }
+
     @GetMapping("/versions")
     public List<String> showVersions() {
 

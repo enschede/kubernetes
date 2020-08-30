@@ -1,27 +1,5 @@
 # Ingress op Kubernetes
 
-
-## Ingress
-Not tested yet
-
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-      name: module1-ingress
-      annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /
-      labels:
-        app: module1
-    spec:
-      rules:
-        - http:
-            paths:
-              - path: /testpath/*
-    #            pathType: Prefix
-                backend:
-                  serviceName: module1
-                  servicePort: 8080
-
 ## Ingress op Docker Desktop
 
 Installeren van de Ingress op Docker Desktop
@@ -61,7 +39,7 @@ Bron
     https://www.freshbrewed.science/aks-and-ingress-again/index.html
     
 ## AWS EKS
+Zie [EKS](eks.md)
 
-Bron https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
-
+- Bron https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 

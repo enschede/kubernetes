@@ -48,7 +48,7 @@
             app: module1
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
             env: {}
               # Zie configAndSecrets
             imagePullPolicy: Always
@@ -64,7 +64,7 @@
 ### Resources
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
             resources:
               requests:
                 # cpu: 200m
@@ -77,7 +77,7 @@
 Wordt gebruikt door replica set om te bepalen of pod healthy is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
             readinessProbe:
               httpGet:
                 port: 8080
@@ -90,7 +90,7 @@ Wordt gebruikt door replica set om te bepalen of pod healthy is
 Wordt gebruikt door load balancer om te bepalen of pod ready is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
             livenessProbe:
               httpGet:
                 port: 8080

@@ -24,7 +24,7 @@ spec:
         app: module1
     spec:
       containers:
-        - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+        - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
           env:
             - name: env1
               value: valueForEnv1
@@ -35,31 +35,31 @@ spec:
                   key: myconfig.env2
             - name: env3
               valueFrom:
-              secretKeyRef:
-                name: mysecret
-                key: env3
-        volumeMounts:
-          - mountPath: /externalvolume
-            name: pvc1
-        imagePullPolicy: Always
-        name: kubernetes-module1
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+                secretKeyRef:
+                  name: mysecret
+                  key: env3
+          volumeMounts:
+            - mountPath: /externalvolume
+              name: pvc1
+          imagePullPolicy: Always
+          name: kubernetes-module1
+          resources: { }
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
       volumes:
         - name: pvc1
           persistentVolumeClaim:
             claimName: module1-pvc
-#        - name: emptydir-pvc
-#          # Directory in de container, is niet persistant
-#          emptyDir: {}
-#        - name: host1
-#          # Directory op host, prima setting in Docker Desktop
-#          hostPath:
-#            path: /Users/marc/mnt
-#            type: Directory
+      #        - name: emptydir-pvc
+      #          # Directory in de container, is niet persistant
+      #          emptyDir: {}
+      #        - name: host1
+      #          # Directory op host, prima setting in Docker Desktop
+      #          hostPath:
+      #            path: /Users/marc/mnt
+      #            type: Directory
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext: { }
       terminationGracePeriodSeconds: 30

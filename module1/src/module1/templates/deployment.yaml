@@ -24,7 +24,7 @@ spec:
         app: module1
     spec:
       containers:
-        - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+        - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
           env:
             - name: env1
               value: valueForEnv1
@@ -45,5 +45,5 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext: { }
       terminationGracePeriodSeconds: 30

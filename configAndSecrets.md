@@ -50,7 +50,7 @@ Environment vars
       template:
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.11-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
             env:
               - name: env1
                 value: valueForEnv1
@@ -78,4 +78,4 @@ Documentatie:
     - https://spring.io/projects/spring-cloud-kubernetes#overview
     - https://thefuturegroup.udemy.com/course/kubernetes-crash-course-for-java-developers/learn/lecture/16905658#overview (60 t/m 66)
     
- Dit moet nog getest worden.
+Dit moet nog getest worden.
