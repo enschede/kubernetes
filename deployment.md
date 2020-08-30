@@ -5,21 +5,31 @@
     kubectl create deployment module1 --image=enschede/kubernetes-module1:0.0.1-SNAPSHOT
     kubectl api-resources
     kubectl get pods
+    kubectl get pods -o wide
+    kubectl get pods -o yaml
     kubectl get all
     kubectl get deployment/module1   
     kubectl get deployment/module1 --watch  
-    kubectl get deployment/module1 -o yaml >deployment.yaml   
+    kubectl get deployment/module1 -o yaml >deployment.yaml
     kubectl delete deployment/module1
     kubectl apply -f deployment.yaml -f service.yaml
-    kubectl scale --replicas=1 deployment/module1
     kubectl rolling-update demo1rpi --image=enschede/demo1rpi:3
     kubectl label nodes <node-name> <label-key>=<label-value>
         
     kubectl delete all -l app=module1
     kubectl delete service -l app=module1
+
+### Logging
     
     kubectl logs deployment/module1
     kubectl logs -f deployment/module1
+
+### Scaling
+
+See https://thefuturegroup.udemy.com/course/kubernetes-crash-course-for-java-developers/learn/lecture/16905670#overview
+
+    kubectl scale --replicas=1 deployment/module1
+    kubectl scale deployment module1 --replicas=2
 
 ## Desployment descriptor
 
