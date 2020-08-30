@@ -13,6 +13,7 @@
     kubectl apply -f deployment.yaml -f service.yaml
     kubectl scale --replicas=1 deployment/module1
     kubectl rolling-update demo1rpi --image=enschede/demo1rpi:3
+    kubectl label nodes <node-name> <label-key>=<label-value>
         
     kubectl delete all -l app=module1
     kubectl delete service -l app=module1

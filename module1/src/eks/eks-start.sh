@@ -1,7 +1,5 @@
 #!/bin/bash
 
-./eks-stop.sh
-
 cat <<EOF | eksctl create cluster -f -
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig

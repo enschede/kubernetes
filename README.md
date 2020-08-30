@@ -8,6 +8,7 @@
 - [Persistent volumes](volumes.md)
 - [Helm](helm.md)
 - [Useful Docker commands](docker.md)
+- [Pod to Node mapping](podNodeMapping.md)
 
 
 - [Dashboard](dashboard.md)

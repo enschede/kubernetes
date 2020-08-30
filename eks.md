@@ -18,7 +18,7 @@
     metadata:
       name: enschede
       region: us-west-2
-    nodeGroups:
+    nodeGroups: of managedNodeGroups:
       - name: ng-1
         instanceType: t3.medium
         desiredCapacity: 2
@@ -48,6 +48,8 @@
     EOF
     
     
+Een managedNodeGroup wordt beheerd door AWS. Updates en scaling gaan automatisch.
+    
 Toevoegen van een extra node cluster
 
       - name: ng-2
@@ -65,7 +67,6 @@ Toevoegen van een extra node cluster
             certManager: true
         ssh:
           allow: true
-
 
 
 ### EKS opruimen
