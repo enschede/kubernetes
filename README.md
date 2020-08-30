@@ -9,6 +9,7 @@
 - [Helm](helm.md)
 - [Useful Docker commands](docker.md)
 - [Pod to Node mapping](podNodeMapping.md)
+- [EKS](eks.md)
 
 
 - [Dashboard](dashboard.md)
