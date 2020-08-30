@@ -27,11 +27,24 @@
         iam:
           # polices added to worker node role
           withAddonPolicies:
+            # ecr access
+            imageBuilder: true
+            autoScaler: true
             # allows read/write to zones in Route53
             externalDNS: true
+            certManager: true
+            appMesh: true
+            appMeshPreview: true
+            ebs: true
+            fsx: true
+            efs: true
             # required for ALB-ingress
             albIngress: true
-            certManager: true
+            xRay: true
+            cloudWatch: true
+    cloudWatch:
+      clusterLogging:
+        enableTypes: ["*"]
     EOF
     
     
