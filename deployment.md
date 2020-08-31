@@ -1,6 +1,6 @@
 ## Kubernetes deployment
 
-### Command
+## Command
 
     kubectl create deployment module1 --image=enschede/kubernetes-module1:0.0.1-SNAPSHOT
     kubectl api-resources
@@ -23,6 +23,8 @@
     
     kubectl logs deployment/module1
     kubectl logs -f deployment/module1
+    
+Logging on EKS, see [EKS](eks.md)
 
 ### Scaling
 

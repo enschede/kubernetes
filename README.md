@@ -17,11 +17,7 @@
 
 # Todo
 
-- Deploy op AWS
-- LoadBalancer vs NodePort op AWS
-- Ingress op AWS
 - EBS op AWS
-- Logging op AWS
 
 
     

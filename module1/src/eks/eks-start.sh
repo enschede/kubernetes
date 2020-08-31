@@ -37,6 +37,7 @@ EOF
 
 #eksctl utils update-cluster-logging --region=us-west-2 --cluster=enschede
 
+./logging.sh
 ./eks-helm.sh
 ./eks-dashboard.sh
 ./eks-ingress.sh
