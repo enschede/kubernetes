@@ -61,7 +61,7 @@ See https://thefuturegroup.udemy.com/course/kubernetes-crash-course-for-java-dev
             app: module1
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
             env: {}
               # Zie configAndSecrets
             imagePullPolicy: Always
@@ -77,7 +77,7 @@ See https://thefuturegroup.udemy.com/course/kubernetes-crash-course-for-java-dev
 ### Resources
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
             resources:
               requests:
                 # cpu: 200m
@@ -90,7 +90,7 @@ See https://thefuturegroup.udemy.com/course/kubernetes-crash-course-for-java-dev
 Wordt gebruikt door replica set om te bepalen of pod healthy is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
             readinessProbe:
               httpGet:
                 port: 8080
@@ -103,7 +103,7 @@ Wordt gebruikt door replica set om te bepalen of pod healthy is
 Wordt gebruikt door load balancer om te bepalen of pod ready is
 
           containers:
-          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
             livenessProbe:
               httpGet:
                 port: 8080

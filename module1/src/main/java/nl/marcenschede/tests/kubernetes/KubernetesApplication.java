@@ -77,17 +77,24 @@ public class KubernetesApplication {
         return String.format("env3 has value '%s'", env3);
     }
 
-    @GetMapping
-    public List<String> root() {
-        return showVersions();
-    }
+//    @GetMapping
+public List<String> root() {
+
+    logger.info("running root");
+
+    return getVersionData();
+}
 
     @GetMapping("/versions")
     public List<String> showVersions() {
 
-        String spanIdString = tracer.currentSpan().context().spanIdString();
+        logger.info("running /versions");
 
-        logger.info("running showVersions");
+        return getVersionData();
+    }
+
+    private List<String> getVersionData() {
+        String spanIdString = tracer.currentSpan().context().spanIdString();
 
         return List.of(
                 String.format("env1 has value '%s'", env1),

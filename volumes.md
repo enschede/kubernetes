@@ -22,7 +22,7 @@ Een PVC kan nodig zijn om een Helm package van een volume te voorzien
       template:
         spec:
           containers:
-          - image: enschede/kubernetes-module1:0.0.12-SNAPSHOT
+          - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
             volumeMounts:
               - mountPath: /externalvolume
                 name: pvc1
