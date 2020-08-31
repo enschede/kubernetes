@@ -13,7 +13,7 @@
 
 
 - [Dashboard](dashboard.md)
-
+- [Labels](labels.md)
 
 # Todo
 

@@ -183,4 +183,12 @@ Bronnen
 
     curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/enschede/;s/{{region_name}}/us-west-2/" | kubectl apply -f -
 
+### Cloud Insights query
+Voorbeeld van een filter
+
+    fields @timestamp, @message
+    | filter `kubernetes.labels.app`="module1"
+    | sort @timestamp desc
+    | limit 100
+
 
