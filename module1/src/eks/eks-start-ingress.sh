@@ -16,8 +16,8 @@ nodeGroups:
     desiredCapacity: 2
     minSize: 1
     maxSize: 4
-    ssh:
-      allow: true
+#    ssh:
+#      allow: true
     iam:
       # polices added to worker node role
       withAddonPolicies:
