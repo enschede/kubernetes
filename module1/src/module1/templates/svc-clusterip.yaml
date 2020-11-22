@@ -10,6 +10,7 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
+    # Selector koppelt de service aan de deployment met betreffende label
     app: module1
   sessionAffinity: None
   type: ClusterIP

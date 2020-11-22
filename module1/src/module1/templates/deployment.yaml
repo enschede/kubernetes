@@ -4,6 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
+    # Koppelt service aan dit label
     app: module1
   name: module1
 spec:
@@ -27,8 +28,10 @@ spec:
         - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
           env:
             - name: env1
+              # harde configuratie in deployment (deze) file
               value: valueForEnv1
             - name: env2
+              # configuratie uit config file, zie configMap.yaml
               valueFrom:
                 configMapKeyRef:
                   name: my-config
