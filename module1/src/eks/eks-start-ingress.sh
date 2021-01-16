@@ -7,8 +7,8 @@ metadata:
   name: enschede
   region: us-west-2
 #  version: "1.18"
-#vpc:
-#  autoAllocateIPV6: true     # Doet niks
+vpc:
+  autoAllocateIPV6: true     # Doet niks
 nodeGroups:
 # managedNodeGroups:
   - name: ng-1
