@@ -6,7 +6,7 @@ kind: ClusterConfig
 metadata:
   name: enschede
   region: us-west-2
-#  version: "1.17"
+#  version: "1.18"
 #vpc:
 #  autoAllocateIPV6: true     # Doet niks
 nodeGroups:
