@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CLUSTER_NAME=enschede
-AWS_ACCOUNT_ID=
-AWS_REGION=us-west-2
+CLUSTER_NAME=`eksctl get cluster -o json | jq -r '.[].metadata.name'`
+AWS_ACCOUNT_ID=`aws sts get-caller-identity | jq -r '.Account'`
+AWS_REGION=`eksctl get cluster -o json | jq -r '.[].metadata.region'`
 
 # https://artifacthub.io/packages/helm/aws/aws-load-balancer-controller
 helm repo add eks https://aws.github.io/eks-charts

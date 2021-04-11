@@ -6,16 +6,28 @@ kind: ClusterConfig
 metadata:
   name: enschede
   region: us-west-2
-#  version: "1.18"
+  version: "1.19"
 vpc:
   autoAllocateIPV6: true     # Doet niks
-nodeGroups:
-# managedNodeGroups:
+#nodeGroups:
+managedNodeGroups:
   - name: ng-1
+#    labels: { role: web }
     instanceType: t3.medium
-    desiredCapacity: 2
+    desiredCapacity: 1
     minSize: 1
     maxSize: 4
+#    asgMetricsCollection:
+#      - granularity: 1Minute
+#        metrics:
+#          - GroupMinSize
+#          - GroupMaxSize
+#          - GroupDesiredCapacity
+#          - GroupInServiceInstances
+#          - GroupPendingInstances
+#          - GroupStandbyInstances
+#          - GroupTerminatingInstances
+#          - GroupTotalInstances
 #    ssh:
 #      allow: true
     iam:
@@ -33,36 +45,27 @@ nodeGroups:
         albIngress: true        # required for ALB-ingress
         xRay: true
         cloudWatch: true
-#nodeGroups:
-#  - name: ng-2
-#    instanceType: t3.medium
-#    desiredCapacity: 2
-#    minSize: 1
-#    maxSize: 4
-#    ssh:
-#      allow: true
-#    iam:
-#      # polices added to worker node role
-#      withAddonPolicies:
-#        # ecr access
-#        imageBuilder: true
-#        autoScaler: true
-#        # allows read/write to zones in Route53
-#        externalDNS: true
-#        certManager: true
-#        appMesh: true
-#        appMeshPreview: true
-#        ebs: true
-#        fsx: true
-#        efs: true
-#        # required for ALB-ingress
-#        albIngress: true
-#        xRay: true
-#        cloudWatch: true
+fargateProfiles:
+  - name: fp-dev
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: dev
+        labels:
+          env: dev
+          checks: passed
 cloudWatch:
   clusterLogging:
     enableTypes: ["*"]
 EOF
+
+# Voeg iam user eks-cluster-admin toe aan system:masters
+eksctl create iamidentitymapping --cluster enschede --arn arn:aws:iam::228991124303:user/eks-cluster-admin --username eks-cluster-admin --group system:masters
+kubectl -n kube-system get cm aws-auth -o yaml
+# Voeg iam user toe aan ~/.kube/config file
+eksctl utils write-kubeconfig --cluster enschede --profile eks-cluster-admin
+# Set iam user als default user
+kubectl config use-context eks-cluster-admin@enschede.us-west-2.eksctl.io
 
 #eksctl utils update-cluster-logging --region=us-west-2 --cluster=enschede
 
