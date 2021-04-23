@@ -1,63 +1,6 @@
 #!/bin/bash
 
-cat <<EOF | eksctl create cluster -f -
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
-metadata:
-  name: enschede
-  region: us-west-2
-  version: "1.19"
-vpc:
-  autoAllocateIPV6: true     # Doet niks
-#nodeGroups:
-managedNodeGroups:
-  - name: ng-1
-#    labels: { role: web }
-    instanceType: t3.medium
-    desiredCapacity: 1
-    minSize: 1
-    maxSize: 4
-#    asgMetricsCollection:
-#      - granularity: 1Minute
-#        metrics:
-#          - GroupMinSize
-#          - GroupMaxSize
-#          - GroupDesiredCapacity
-#          - GroupInServiceInstances
-#          - GroupPendingInstances
-#          - GroupStandbyInstances
-#          - GroupTerminatingInstances
-#          - GroupTotalInstances
-#    ssh:
-#      allow: true
-    iam:
-      # polices added to worker node role
-      withAddonPolicies:
-        imageBuilder: true      # ecr access
-        autoScaler: true
-        externalDNS: true       # allows read/write to zones in Route53
-        certManager: true
-        appMesh: true
-        appMeshPreview: true
-        ebs: true
-        fsx: true
-        efs: true
-        albIngress: true        # required for ALB-ingress
-        xRay: true
-        cloudWatch: true
-fargateProfiles:
-  - name: fp-dev
-    selectors:
-      # All workloads in the "dev" Kubernetes namespace matching the following
-      # label selectors will be scheduled onto Fargate:
-      - namespace: dev
-        labels:
-          env: dev
-          checks: passed
-cloudWatch:
-  clusterLogging:
-    enableTypes: ["*"]
-EOF
+eksctl create cluster -f enschede.yaml
 
 # Voeg iam user eks-cluster-admin toe aan system:masters
 eksctl create iamidentitymapping --cluster enschede --arn arn:aws:iam::228991124303:user/eks-cluster-admin --username eks-cluster-admin --group system:masters
