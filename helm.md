@@ -28,3 +28,10 @@ Bron: https://github.com/fnproject/fn-helm/issues/21
     
     helm delete module1
     helm delete --purge module1
+
+## Helm 3
+
+helm install module1 . helm install module2 . -n module2 helm update module1 . helm delete module2 =n module2
+
+helm install prometheus prometheus-community/prometheus
+
