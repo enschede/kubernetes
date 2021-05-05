@@ -18,6 +18,8 @@ managedNodeGroups:
     #    ssh:
     #      allow: true
     iam:
+#      attachPolicyARNs:
+      #        - arn:aws:iam::228991124303:policy/EKSAutoScalingPolicy
       # polices added to worker node role
       withAddonPolicies:
         imageBuilder: true      # ecr access
@@ -32,6 +34,9 @@ managedNodeGroups:
         albIngress: true        # required for ALB-ingress
         xRay: true
         cloudWatch: true
+    tags:
+      k8s.io/cluster-autoscaler/enschede: owned
+      k8s.io/cluster-autoscaler/enabled: "true"
 #  - name: ng-micro
 ##    instanceType: t3.medium
 #    instanceType: t2.micro

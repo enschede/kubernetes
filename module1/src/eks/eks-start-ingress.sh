@@ -12,6 +12,7 @@ kubectl config use-context eks-cluster-admin@enschede.us-west-2.eksctl.io
 
 #eksctl utils update-cluster-logging --region=us-west-2 --cluster=enschede
 
+./eks-cluster-autoscaler.sh
 ./eks-logging.sh
 ./eks-helm.sh
 ./eks-dashboard.sh
