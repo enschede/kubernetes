@@ -17,3 +17,4 @@ kubectl config use-context eks-cluster-admin@enschede.us-west-2.eksctl.io
 ./eks-helm.sh
 ./eks-dashboard.sh
 ./eks-ingress-controller.sh
+./eks-external-dns.sh
