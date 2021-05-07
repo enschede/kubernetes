@@ -1,12 +1,12 @@
 #!/bin/bash
 
-helm install extdns bitnami/external-dns \
+helm upgrade --install extdns bitnami/external-dns \
 --set provider=aws \
---set interval=1m \
+--set interval=5m \
 --set logLevel=debug \
 --set policy=sync \
 
-#--set aws.preferCNAME \
+#--set aws.prefer=CNAME \
 #--set domainFilters[0]=*.liberaalgeluid.nl \
 #--set registry=txt \
 #--set txtOwnerId=Z00691841HMBHE5SI77D0 \
