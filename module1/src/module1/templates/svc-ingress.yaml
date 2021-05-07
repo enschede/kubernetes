@@ -1,35 +1,36 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ingress
+  name: module-ingress
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:228991124303:certificate/887af1da-47a6-43ad-9920-8ebf08bacf2b
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP": 81}, {"HTTPS":443}]'
-    external-dns.alpha.kubernetes.io/hostname: {{ .Release.Name }}.liberaalgeluid.nl, liberaalgeluid.nl
+    alb.ingress.kubernetes.io/group.name: module
+    external-dns.alpha.kubernetes.io/hostname: {{.Values.endpoint}}.liberaalgeluid.nl, liberaalgeluid.nl
   labels:
-    app: {{ .Release.Name }}-service
+    app: module-service
 spec:
   rules:
-    - host: {{ .Release.Name }}.liberaalgeluid.nl
+    - host: {{.Values.endpoint}}.liberaalgeluid.nl
       http:
         paths:
           - path: /*
             backend:
-              serviceName: {{ .Release.Name }}-service
+              serviceName: module-service
               servicePort: 8080
     - host: liberaalgeluid.nl
       http:
         paths:
-          - path: /{{ .Release.Name }}/*
+          - path: /{{.Values.endpoint}}/*
             backend:
-              serviceName: {{ .Release.Name }}-service
+              serviceName: module-service
               servicePort: 8080
     - http:
         paths:
-          - path: /{{ .Release.Name }}/*
+          - path: /{{.Values.endpoint}}/*
             backend:
-              serviceName: {{ .Release.Name }}-service
+              serviceName: module-service
               servicePort: 8080

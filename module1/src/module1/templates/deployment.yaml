@@ -34,12 +34,12 @@ spec:
               # configuratie uit config file, zie configMap.yaml
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Release.Name }}-my-config
+                  name: module-my-config
                   key: myconfig.env2
             - name: env3
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-mysecret
+                  name: module-mysecret
                   key: env3
           imagePullPolicy: Always
           name: kubernetes-{{ $.Chart.Name }}

@@ -3,4 +3,5 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+endpoint: module1
 

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}-service
+    app: module
+  name: module-service
 spec:
   ports:
     - port: 8080
@@ -11,6 +11,6 @@ spec:
       targetPort: 8080
   selector:
     # Selector koppelt de service aan de deployment met betreffende label
-    app: {{ .Release.Name }}-service-deployment
+    app: module-service-deployment
   sessionAffinity: None
   type: ClusterIP
