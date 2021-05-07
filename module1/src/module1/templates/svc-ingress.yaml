@@ -1,36 +1,35 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: module1-ingress
-  {{/*  annotations:*/}}
-  {{/*    external-dns.alpha.kubernetes.io/hostname: app1.liberaalgeluid.nl*/}}
-  {{/*    kubernetes.io/ingress.class: alb*/}}
-  {{/*    # required to use ClusterIP*/}}
-  {{/*    alb.ingress.kubernetes.io/target-type: ip*/}}
-  {{/*    # required to place on public-subnet*/}}
-  {{/*    alb.ingress.kubernetes.io/scheme: internet-facing*/}}
-  {{/*    */}}{{/*    # use TLS registered to our domain, ALB will terminate the certificate*/}}
-  {{/*    */}}{{/*    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:XXXXXXXXXXXX:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx*/}}
-  {{/*    # respond to both ports*/}}
-  {{/*    */}}{{/*    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'*/}}
-  {{/*    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80},{"HTTP": 81}]'*/}}
-  {{/*    # redirect to port 80 to port 443*/}}
-  {{/*  */}}{{/*    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'*/}}
-
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:228991124303:certificate/887af1da-47a6-43ad-9920-8ebf08bacf2b
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP": 81}, {"HTTPS":443}]'
+    external-dns.alpha.kubernetes.io/hostname: {{ .Release.Name }}.liberaalgeluid.nl, liberaalgeluid.nl
   labels:
-    app: module1
+    app: {{ .Release.Name }}-service
 spec:
   rules:
-    - host: app1.liberaalgeluid.nl
+    - host: {{ .Release.Name }}.liberaalgeluid.nl
       http:
         paths:
           - path: /*
             backend:
-              serviceName: module1
+              serviceName: {{ .Release.Name }}-service
+              servicePort: 8080
+    - host: liberaalgeluid.nl
+      http:
+        paths:
+          - path: /{{ .Release.Name }}/*
+            backend:
+              serviceName: {{ .Release.Name }}-service
               servicePort: 8080
     - http:
         paths:
-          - path: /*
+          - path: /{{ .Release.Name }}/*
             backend:
-              serviceName: module1
+              serviceName: {{ .Release.Name }}-service
               servicePort: 8080

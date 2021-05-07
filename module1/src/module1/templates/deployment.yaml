@@ -5,15 +5,15 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     # Koppelt service aan dit label
-    app: {{ $.Chart.Name }}
-  name: {{ $.Chart.Name }}
+    app: {{ $.Chart.Name }}-service-deployment
+  name: {{ $.Chart.Name }}-deployment
 spec:
   progressDeadlineSeconds: 600
   replicas: {{.Values.replicaCount}}
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: {{ $.Chart.Name }}
+      app: {{ $.Chart.Name }}-deployment
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,7 +22,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ $.Chart.Name }}
+        app: {{ $.Chart.Name }}-deployment
     spec:
       containers:
         - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
@@ -34,12 +34,12 @@ spec:
               # configuratie uit config file, zie configMap.yaml
               valueFrom:
                 configMapKeyRef:
-                  name: my-config
+                  name: {{ .Release.Name }}-my-config
                   key: myconfig.env2
             - name: env3
               valueFrom:
                 secretKeyRef:
-                  name: mysecret
+                  name: {{ .Release.Name }}-mysecret
                   key: env3
           imagePullPolicy: Always
           name: kubernetes-{{ $.Chart.Name }}
