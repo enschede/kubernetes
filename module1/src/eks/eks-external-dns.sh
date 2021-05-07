@@ -4,8 +4,10 @@ helm install extdns bitnami/external-dns \
 --set provider=aws \
 --set interval=1m \
 --set logLevel=debug \
+--set policy=sync \
+
+#--set aws.preferCNAME \
 #--set domainFilters[0]=*.liberaalgeluid.nl \
-#--set policy=sync \
 #--set registry=txt \
 #--set txtOwnerId=Z00691841HMBHE5SI77D0 \
 #--set rbac.create=true \
