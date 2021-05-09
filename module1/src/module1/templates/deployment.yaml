@@ -5,15 +5,15 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     # Koppelt service aan dit label
-    app: {{ $.Chart.Name }}-service-deployment
-  name: {{ $.Chart.Name }}-deployment
+    app: module-deployment
+  name: module-deployment
 spec:
   progressDeadlineSeconds: 600
   replicas: {{.Values.replicaCount}}
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: {{ $.Chart.Name }}-deployment
+      app: module-deployment
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,7 +22,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ $.Chart.Name }}-deployment
+        app: module-deployment
     spec:
       containers:
         - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
@@ -42,7 +42,7 @@ spec:
                   name: module-mysecret
                   key: env3
           imagePullPolicy: Always
-          name: kubernetes-{{ $.Chart.Name }}
+          name: kubernetes-module
           resources:
             requests:
               # cpu: 200m

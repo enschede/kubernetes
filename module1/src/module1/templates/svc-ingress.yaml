@@ -8,6 +8,8 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:228991124303:certificate/887af1da-47a6-43ad-9920-8ebf08bacf2b
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP": 81}, {"HTTPS":443}]'
+    # dualstack werkt alleen als de subnets ook dualstack zijn
+    alb.ingress.kubernetes.io/ip-address-type: ipv4
     alb.ingress.kubernetes.io/group.name: module
     external-dns.alpha.kubernetes.io/hostname: {{.Values.endpoint}}.liberaalgeluid.nl, liberaalgeluid.nl
   labels:
