@@ -10,12 +10,12 @@
     </parent>
     <groupId>nl.marcenschede.tests</groupId>
     <artifactId>module1</artifactId>
-    <version>0.0.14-SNAPSHOT</version>
+    <version>0.0.16-SNAPSHOT</version>
     <name>module1</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
     </properties>
 
@@ -36,6 +36,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.cloud</groupId>-->
@@ -47,10 +56,6 @@
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>

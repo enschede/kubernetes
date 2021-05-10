@@ -23,9 +23,13 @@ spec:
     metadata:
       labels:
         app: module-deployment
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/actuator/prometheus"
     spec:
       containers:
-        - image: enschede/kubernetes-module1:0.0.14-SNAPSHOT
+        - image: enschede/kubernetes-module1:0.0.16-SNAPSHOT
           env:
             - name: env1
               # harde configuratie in deployment (deze) file
