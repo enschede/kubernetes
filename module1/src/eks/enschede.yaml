@@ -14,11 +14,12 @@ managedNodeGroups:
     #    instanceType: t2.micro
     desiredCapacity: 1
     minSize: 1
-    maxSize: 4
+    maxSize: 6
+    spot: true
     #    ssh:
     #      allow: true
     iam:
-#      attachPolicyARNs:
+      #      attachPolicyARNs:
       #        - arn:aws:iam::228991124303:policy/EKSAutoScalingPolicy
       # polices added to worker node role
       withAddonPolicies:
@@ -37,29 +38,6 @@ managedNodeGroups:
     tags:
       k8s.io/cluster-autoscaler/enschede: owned
       k8s.io/cluster-autoscaler/enabled: "true"
-#  - name: ng-micro
-##    instanceType: t3.medium
-#    instanceType: t2.micro
-#    desiredCapacity: 2
-#    minSize: 1
-#    maxSize: 4
-#    #    ssh:
-#    #      allow: true
-#    iam:
-#      # polices added to worker node role
-#      withAddonPolicies:
-#        imageBuilder: true      # ecr access
-#        autoScaler: true
-#        externalDNS: true       # allows read/write to zones in Route53
-#        certManager: true
-#        appMesh: true
-#        appMeshPreview: true
-#        ebs: true
-#        fsx: true
-#        efs: true
-#        albIngress: true        # required for ALB-ingress
-#        xRay: true
-#        cloudWatch: true
 #    labels: { role: web }      # Is alleen maar beschikbaar voor pods met dit label
 #fargateProfiles:
 #  - name: fp-dev
