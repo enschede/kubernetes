@@ -90,7 +90,7 @@
                 </executions>
                 <configuration>
                     <image>
-                        <name>enschede/kubernetes-module1:${project.version}</name>
+                        <name>228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1:${project.version}</name>
                     </image>
                 </configuration>
             </plugin>
@@ -132,9 +132,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>enschede/kubernetes-module1</repository>
+                    <repository>228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1</repository>
                     <tag>${project.version}</tag>
-                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                    <!--                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
                 </configuration>
             </plugin>
             <plugin>
