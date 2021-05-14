@@ -3,14 +3,18 @@ kind: Service
 metadata:
   labels:
     app: module
-  name: module-service
+    env: int
+  name: module-service  # Hier verwijst de Ingress naar
 spec:
   ports:
     - port: 8080
       protocol: TCP
       targetPort: 8080
+      name: http
   selector:
     # Selector koppelt de service aan de deployment met betreffende label
-    app: module-deployment
+    customer: kadaster
+    app: ozon
+    env: int
   sessionAffinity: None
   type: ClusterIP

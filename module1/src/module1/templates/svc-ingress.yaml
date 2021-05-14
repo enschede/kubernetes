@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: module-ingress
@@ -11,28 +11,37 @@ metadata:
     # dualstack werkt alleen als de subnets ook dualstack zijn
     alb.ingress.kubernetes.io/ip-address-type: ipv4
     alb.ingress.kubernetes.io/group.name: module
-    external-dns.alpha.kubernetes.io/hostname: {{.Values.endpoint}}.liberaalgeluid.nl, liberaalgeluid.nl
+    external-dns.alpha.kubernetes.io/hostname: module1.liberaalgeluid.nl, liberaalgeluid.nl
   labels:
     app: module-service
 spec:
   rules:
-    - host: {{.Values.endpoint}}.liberaalgeluid.nl
+    - host: module1.liberaalgeluid.nl
       http:
         paths:
           - path: /*
+            pathType: Prefix
             backend:
-              serviceName: module-service
-              servicePort: 8080
+              service:
+                name: module-service
+                port:
+                  name: http
     - host: liberaalgeluid.nl
       http:
         paths:
-          - path: /{{.Values.endpoint}}/*
+          - path: /module1/*
+            pathType: ImplementationSpecific
             backend:
-              serviceName: module-service
-              servicePort: 8080
+              service:
+                name: module-service
+                port:
+                  number: 8080
     - http:
         paths:
-          - path: /{{.Values.endpoint}}/*
+          - path: /module1/*
+            pathType: Exact
             backend:
-              serviceName: module-service
-              servicePort: 8080
+              service:
+                name: module-service
+                port:
+                  number: 8080

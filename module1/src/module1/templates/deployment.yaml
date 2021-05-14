@@ -4,7 +4,6 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    # Koppelt service aan dit label
     app: module-deployment
   name: module-deployment
 spec:
@@ -13,7 +12,9 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: module-deployment
+      customer: kadaster
+      app: ozon
+      env: int
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,7 +23,11 @@ spec:
   template:
     metadata:
       labels:
-        app: module-deployment
+        # Koppelt service aan dit label
+        customer: kadaster
+        app: ozon
+        env: int
+        extra: dummy
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
