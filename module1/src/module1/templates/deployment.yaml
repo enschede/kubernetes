@@ -14,7 +14,7 @@ spec:
     matchLabels:
       customer: kadaster
       app: ozon
-      env: int
+      env: {{.Release.Namespace}}
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -26,7 +26,7 @@ spec:
         # Koppelt service aan dit label
         customer: kadaster
         app: ozon
-        env: int
+        env: {{.Release.Namespace}}
         extra: dummy
       annotations:
         prometheus.io/scrape: "true"
