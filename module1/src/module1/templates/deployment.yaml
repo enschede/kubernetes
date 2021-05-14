@@ -34,7 +34,7 @@ spec:
         prometheus.io/path: "/actuator/prometheus"
     spec:
       containers:
-        - image: 228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1:0.0.17-SNAPSHOT
+        - image: 228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1:0.0.19-SNAPSHOT
           env:
             - name: env1
               # harde configuratie in deployment (deze) file
