@@ -30,3 +30,5 @@ echo =====> EKS Ingress Controller
 
 echo =====> EKS External DNS
 ./eks-external-dns.sh
+
+./eks-dashboard-proxy.sh
