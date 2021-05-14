@@ -2,7 +2,7 @@
 
 helm upgrade --install extdns bitnami/external-dns \
 --set provider=aws \
---set interval=5m \
+--set interval=1m \
 --set logLevel=debug \
 --set policy=sync \
 
