@@ -34,7 +34,7 @@ spec:
         prometheus.io/path: "/actuator/prometheus"
     spec:
       containers:
-        - image: 228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1:0.0.16-SNAPSHOT
+        - image: 228991124303.dkr.ecr.us-west-2.amazonaws.com/enschede/module1:0.0.17-SNAPSHOT
           env:
             - name: env1
               # harde configuratie in deployment (deze) file
@@ -50,6 +50,11 @@ spec:
                 secretKeyRef:
                   name: module-mysecret
                   key: env3
+            - name: value.From.Kubernetes
+              valueFrom:
+                configMapKeyRef:
+                  name: kubernetes-module
+                  key: conf2
           imagePullPolicy: Always
           name: kubernetes-module
           resources:

@@ -5,4 +5,4 @@ metadata:
   labels:
     app: module
 data:
-  myconfig.env2: valueForEnv2
+  myconfig.env2: valueFromConfigMap.yaml

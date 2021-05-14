@@ -1,11 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  # Als de naam gelijk is aan de naam van de applicatie (in application.properties) dan wordt deze onder K8S automatisch geladen
-  # (mits Spring Cloud Kubernetes is geladen)
   name: kubernetes-module
   labels:
     app: module
 data:
-  # Hier wordt een default value geladen, die door Kubernetes zou moeten worden overschreven (nog ongetest)
-  valueFromKubernetes: value from configMap2
+  # Hier wordt een default value geladen, die door Kubernetes zou moeten worden overschreven
+  conf2: "value From configmap2.yaml"
