@@ -34,7 +34,7 @@ managedNodeGroups:
         efs: true
         albIngress: true        # required for ALB-ingress
         xRay: true
-        cloudWatch: true
+#        cloudWatch: true
     tags:
       k8s.io/cluster-autoscaler/enschede: owned
       k8s.io/cluster-autoscaler/enabled: "true"
@@ -47,6 +47,7 @@ managedNodeGroups:
 #      - namespace: dev
 #        labels:
 #          env: build
-cloudWatch:
-  clusterLogging:
-    enableTypes: [ "*" ]
+
+#cloudWatch:
+#  clusterLogging:
+#    enableTypes: [ "*" ]
